@@ -6,29 +6,9 @@ Dashboard interactivo para el análisis geoespacial de la relación entre infrae
 
 **Las parroquias con actividad petrolera tienen 33% menos acceso a servicios de salud** (5.87 vs 8.88 establecimientos por 10,000 habitantes).
 
-## 🚀 Deploy en Streamlit Cloud (Gratis)
+## 🚀 Visualización en [Streamlit Cloud](https://prototipopoliticapublica-ecuador.streamlit.app/)
 
-### Opción 1: Deploy Directo desde GitHub
-
-1. **Sube tu proyecto a GitHub:**
-```bash
-cd prototipo_tfm
-git init
-git add .
-git commit -m "Initial commit: Dashboard TFM"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
-git push -u origin main
-```
-
-2. **Deploy en Streamlit Cloud:**
-   - Ve a [share.streamlit.io](https://share.streamlit.io)
-   - Conecta tu cuenta de GitHub
-   - Selecciona tu repositorio
-   - Main file path: `dashboard/app.py`
-   - Click "Deploy"
-
-### Opción 2: Ejecutar Localmente
+## Opción 2: Ejecutar Localmente
 
 ```bash
 # 1. Instalar dependencias
@@ -68,7 +48,6 @@ prototipo_tfm/
 
 El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 - ✅ No requiere base de datos
-- ✅ Deploy 100% gratuito
 - ✅ Carga rápida con caché
 - ✅ Portable y fácil de replicar
 
@@ -111,12 +90,6 @@ El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 - Estadísticas descriptivas
 - Tablas interactivas
 
-## 🎓 Contexto Académico
-
-**TFM - Máster en Visual Analytics and Big Data**  
-**Año:** 2025  
-**Tema:** Análisis geoespacial de inequidades socioambientales
-
 ## 📝 Metodología
 
 1. **ETL**: 7 notebooks de procesamiento de datos
@@ -134,12 +107,22 @@ El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 ## 🤝 Contribuciones
 
 Este es un proyecto académico. Para preguntas o colaboraciones:
-- Email: [tu_email@ejemplo.com]
-- GitHub: [Tu perfil]
+- Email: [almeidaandres12@gmail.com]
+- GitHub: [andresalmeida]
 
 ## 📄 Licencia
 
-MIT License - Uso académico y educativo
+**Copyright © 2025 - Todos los derechos reservados**
+
+Este proyecto es un prototipo desarrollado para análisis de política pública en Ecuador.
+
+**Restricciones:**
+- El código y análisis son propiedad del autor
+- No se permite uso comercial sin autorización escrita
+- Uso permitido únicamente para revisión académica y evaluación gubernamental
+- Para solicitar permisos de uso, contactar al autor
+
+**Datos oficiales**: Los datos utilizados provienen de fuentes públicas (CONALI, INEC, MSP, MAATE) y mantienen sus licencias originales.
 
 ---
 
