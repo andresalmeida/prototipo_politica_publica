@@ -1,0 +1,5 @@
+cluster_kmeans,n_parroquias,pob_total,pob_afro,pct_afro_mean,n_establecimientos,estab_10k_mean,n_infraestructura,densidad_petroleo_mean
+0.0,385,3819551.0,61214.0,1.11,1160,5.94,2097,0.01
+1.0,5,117219.0,2861.0,1.66,23,1.28,3200,2.5
+2.0,289,959031.0,5002.0,0.32,601,11.66,8,0.0
+3.0,30,58886.0,27168.0,46.02,72,16.13,0,0.0

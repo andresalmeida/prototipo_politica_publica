@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Database (ya no se usa)
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# Archivos GeoJSON grandes (no necesarios para el dashboard)
+data/geo/parroquias.geojson
+data/geo/parroquias_analisis_completo.geojson
+
