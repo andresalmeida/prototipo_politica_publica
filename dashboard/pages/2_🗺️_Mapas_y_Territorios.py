@@ -25,11 +25,24 @@ from utils.data_loader import load_parroquias_completo
 
 st.set_page_config(**PAGE_CONFIG)
 
-# Header de la página
+# Header de la página con estilo premium
 st.markdown("""
-<div style='background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;'>
-    <h1 style='color: white; margin: 0; border: none;'>🗺️ Mapas y Territorios</h1>
-    <p style='color: rgba(255,255,255,0.9); margin-top: 0.5rem;'>Visualización geoespacial y clustering territorial</p>
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+<div style='
+    background: linear-gradient(135deg, #b91c1c 0%, #ef4444 50%, #f87171 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(239, 68, 68, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out;
+'>
+    <div style='position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);'></div>
+    <h1 style='color: white; margin: 0; border: none; position: relative; z-index: 1; font-size: 2.25rem; font-weight: 800;'>🗺️ Mapas y Territorios</h1>
+    <p style='color: rgba(255,255,255,0.95); margin-top: 0.75rem; position: relative; z-index: 1; font-size: 1.1rem; font-weight: 500;'>Visualización geoespacial avanzada y clustering territorial</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -118,7 +131,14 @@ with col1:
     )
     
     st.plotly_chart(fig1, use_container_width=True)
-    st.caption(f"**Interpretación:** {len(df_salud):,} parroquias con datos de salud. Las áreas urbanas (costa y sierra centro) concentran mayor acceso a servicios de salud.")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #10b981; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #047857;'>✓</strong> {len(df_salud):,} parroquias con datos de salud. 
+            Áreas urbanas (costa y sierra centro) concentran mayor acceso.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # MAPA 2: Infraestructura Petrolera
 with col2:
@@ -157,7 +177,14 @@ with col2:
     )
     
     st.plotly_chart(fig2, use_container_width=True)
-    st.caption(f"**Interpretación:** {len(df_petroleo):,} parroquias con actividad petrolera. Concentración en la Amazonía (Sucumbíos, Orellana) y costa (Santa Elena).")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #ef4444; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #b91c1c;'>⚠</strong> {len(df_petroleo):,} parroquias con actividad petrolera. 
+            Concentración en Amazonía (Sucumbíos, Orellana) y costa (Santa Elena).
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 col3, col4 = st.columns(2)
 
@@ -209,7 +236,15 @@ with col3:
     
     con_petroleo = len(df[df['tiene_petroleo'] == 1])
     sin_petroleo = len(df[df['tiene_petroleo'] == 0])
-    st.caption(f"**Interpretación:** Con petróleo: {con_petroleo:,} | Sin petróleo: {sin_petroleo:,}. Solo el 8.6% de las parroquias tienen actividad petrolera.")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #1e40af;'>📊</strong> Con petróleo: <strong>{con_petroleo:,}</strong> | 
+            Sin petróleo: <strong>{sin_petroleo:,}</strong>. 
+            Solo el <strong style='color: #ef4444;'>8.6%</strong> tiene actividad petrolera.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # MAPA 4: Clusters + Densidad Petrolera
 with col4:
@@ -275,7 +310,33 @@ with col4:
     c3 = (df['cluster'] == 3).sum()
     sin_cluster = df['cluster'].isna().sum()
     
-    st.caption(f"**Interpretación:** K-Means identifica 4 grupos distintos. Cluster 0 (azul, n={c0}): baja actividad petrolera. Cluster 1 (rojo, n={c1}): **alta actividad petrolera en Amazonía**. Cluster 2 (verde, n={c2}): sin petróleo, mejor salud. Cluster 3 (naranja, n={c3}): alta población afroecuatoriana en Esmeraldas. Gris (n={sin_cluster}): sin datos completos. El tamaño indica densidad petrolera (infra/km²).")
+    st.markdown(f"""
+    <div style='
+        background: white;
+        padding: 1.25rem 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #8b5cf6;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-top: 0.5rem;
+    '>
+        <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;'>
+            <span style='font-size: 1.5rem;'>🎯</span>
+            <strong style='color: #6d28d9; font-size: 1rem;'>Clustering Territorial</strong>
+        </div>
+        <p style='margin: 0; color: #475569; line-height: 1.7;'>
+            K-Means identifica <strong>4 grupos distintos</strong>:
+        </p>
+        <ul style='margin: 0.75rem 0 0 0; padding-left: 1.5rem; color: #475569; line-height: 1.8;'>
+            <li><strong style='color: #3b82f6;'>Cluster 0</strong> (n={c0}): Baja actividad petrolera</li>
+            <li><strong style='color: #ef4444;'>Cluster 1</strong> (n={c1}): Alta actividad petrolera en Amazonía</li>
+            <li><strong style='color: #10b981;'>Cluster 2</strong> (n={c2}): Sin petróleo, mejor salud</li>
+            <li><strong style='color: #f59e0b;'>Cluster 3</strong> (n={c3}): Alta población afroecuatoriana (Esmeraldas)</li>
+        </ul>
+        <p style='margin: 0.75rem 0 0 0; color: #64748b; font-size: 0.85rem; font-style: italic;'>
+            El tamaño del punto indica densidad petrolera (infraestructura/km²)
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -350,7 +411,15 @@ with col1:
     )
     
     st.plotly_chart(fig_scatter, use_container_width=True)
-    st.caption(f"**Interpretación:** Correlación negativa débil (r={r_value:.3f}). A mayor infraestructura petrolera, menor acceso a salud. La tendencia (línea roja) muestra la relación inversa.")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #ef4444; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #b91c1c;'>📉</strong> Correlación negativa (r={r_value:.3f}). 
+            A mayor infraestructura petrolera, <strong>menor acceso a salud</strong>. 
+            La línea roja muestra la relación inversa.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # GRÁFICO 2: Boxplot por Cluster
 with col2:
@@ -388,7 +457,14 @@ with col2:
     cluster_stats = df.groupby('cluster')['infraestructura'].mean()
     cluster_petrolero = cluster_stats.idxmax()
     
-    st.caption(f"**Interpretación:** Cluster {cluster_petrolero} (petrolero) tiene la mediana más baja de acceso a salud. Los outliers superiores representan capitales provinciales.")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #1e40af;'>📊</strong> Cluster <strong>{int(cluster_petrolero)}</strong> (petrolero) 
+            tiene la mediana más baja. Outliers = capitales provinciales.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # GRÁFICO 3: Barras Comparativas
 with col3:
@@ -439,7 +515,15 @@ with col3:
     )
     
     st.plotly_chart(fig_bar, use_container_width=True)
-    st.caption(f"**Interpretación:** Cluster {cluster_petrolero} tiene alta densidad petrolera (rojo) pero baja salud (verde). La paradoja extractivista es evidente: los recursos no se traducen en servicios.")
+    st.markdown(f"""
+    <div style='background: white; padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid #f59e0b; margin-top: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>
+        <p style='margin: 0; color: #475569; font-size: 0.9rem;'>
+            <strong style='color: #d97706;'>⚖️</strong> Cluster <strong>{int(cluster_petrolero)}</strong>: 
+            alta densidad petrolera (rojo) pero <strong style='color: #ef4444;'>baja salud</strong> (verde). 
+            Paradoja extractivista evidente.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -471,50 +555,100 @@ cluster_afro = cluster_stats_full['% Afro Promedio'].idxmax()
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.info(f"""
-    **Cluster 0**
-    
-    {int(cluster_stats_full.loc[0, 'Num. Parroquias'])} parroquias
-    
-    Infraestructura: {cluster_stats_full.loc[0, 'Infraestructura Promedio']:.2f}
-    
-    Salud: {cluster_stats_full.loc[0, 'Salud Promedio']:.2f}
-    """)
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.25rem; border-radius: 10px; border-top: 3px solid #3b82f6; box-shadow: 0 2px 8px rgba(0,0,0,0.08);'>
+        <div style='color: #1e40af; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem;'>Cluster 0</div>
+        <div style='font-size: 2rem; font-weight: 700; color: #3b82f6; margin-bottom: 0.5rem;'>{int(cluster_stats_full.loc[0, 'Num. Parroquias'])}</div>
+        <div style='color: #64748b; font-size: 0.85rem; margin-bottom: 0.75rem;'>parroquias</div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Infraestructura</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[0, 'Infraestructura Promedio']:.2f}</div>
+        </div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Salud/10k hab</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[0, 'Salud Promedio']:.2f}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col2:
-    st.info(f"""
-    **Cluster 1**
-    
-    {int(cluster_stats_full.loc[1, 'Num. Parroquias'])} parroquias
-    
-    Infraestructura: {cluster_stats_full.loc[1, 'Infraestructura Promedio']:.2f}
-    
-    Salud: {cluster_stats_full.loc[1, 'Salud Promedio']:.2f}
-    """)
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); padding: 1.25rem; border-radius: 10px; border-top: 3px solid #ef4444; box-shadow: 0 2px 8px rgba(0,0,0,0.08);'>
+        <div style='color: #b91c1c; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem;'>Cluster 1 🔴</div>
+        <div style='font-size: 2rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;'>{int(cluster_stats_full.loc[1, 'Num. Parroquias'])}</div>
+        <div style='color: #64748b; font-size: 0.85rem; margin-bottom: 0.75rem;'>parroquias petroleras</div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Infraestructura</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[1, 'Infraestructura Promedio']:.2f}</div>
+        </div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Salud/10k hab</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[1, 'Salud Promedio']:.2f}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col3:
-    st.info(f"""
-    **Cluster 2**
-    
-    {int(cluster_stats_full.loc[2, 'Num. Parroquias'])} parroquias
-    
-    Infraestructura: {cluster_stats_full.loc[2, 'Infraestructura Promedio']:.2f}
-    
-    Salud: {cluster_stats_full.loc[2, 'Salud Promedio']:.2f}
-    """)
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 1.25rem; border-radius: 10px; border-top: 3px solid #10b981; box-shadow: 0 2px 8px rgba(0,0,0,0.08);'>
+        <div style='color: #047857; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem;'>Cluster 2 ✅</div>
+        <div style='font-size: 2rem; font-weight: 700; color: #10b981; margin-bottom: 0.5rem;'>{int(cluster_stats_full.loc[2, 'Num. Parroquias'])}</div>
+        <div style='color: #64748b; font-size: 0.85rem; margin-bottom: 0.75rem;'>mejor salud</div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Infraestructura</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[2, 'Infraestructura Promedio']:.2f}</div>
+        </div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Salud/10k hab</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[2, 'Salud Promedio']:.2f}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col4:
-    st.info(f"""
-    **Cluster 3**
-    
-    {int(cluster_stats_full.loc[3, 'Num. Parroquias'])} parroquias
-    
-    Infraestructura: {cluster_stats_full.loc[3, 'Infraestructura Promedio']:.2f}
-    
-    Salud: {cluster_stats_full.loc[3, 'Salud Promedio']:.2f}
-    """)
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); padding: 1.25rem; border-radius: 10px; border-top: 3px solid #f59e0b; box-shadow: 0 2px 8px rgba(0,0,0,0.08);'>
+        <div style='color: #d97706; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem;'>Cluster 3 👥</div>
+        <div style='font-size: 2rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;'>{int(cluster_stats_full.loc[3, 'Num. Parroquias'])}</div>
+        <div style='color: #64748b; font-size: 0.85rem; margin-bottom: 0.75rem;'>comunidades afro</div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Infraestructura</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[3, 'Infraestructura Promedio']:.2f}</div>
+        </div>
+        <div style='background: white; padding: 0.5rem; border-radius: 6px;'>
+            <div style='color: #64748b; font-size: 0.75rem;'>Salud/10k hab</div>
+            <div style='color: #0f172a; font-weight: 600;'>{cluster_stats_full.loc[3, 'Salud Promedio']:.2f}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.caption(f"**Interpretación:** Cluster {int(cluster_petrolero)} concentra la mayor actividad petrolera en Amazonía. Cluster {int(cluster_salud)} tiene el mejor acceso a salud sin petróleo. Cluster {int(cluster_afro)} presenta la mayor población afroecuatoriana en Esmeraldas. Cluster 0 representa parroquias con características intermedias.")
+# Interpretación final
+st.markdown(f"""
+<div style='
+    background: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-top: 1.5rem;
+'>
+    <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;'>
+        <span style='font-size: 1.5rem;'>🎯</span>
+        <strong style='color: #1e40af; font-size: 1rem;'>Conclusiones del Análisis Espacial</strong>
+    </div>
+    <p style='margin: 0; color: #475569; line-height: 1.7;'>
+        <strong style='color: #ef4444;'>Cluster {int(cluster_petrolero)}</strong> concentra la mayor actividad petrolera en Amazonía. 
+        <strong style='color: #10b981;'>Cluster {int(cluster_salud)}</strong> tiene el mejor acceso a salud sin petróleo. 
+        <strong style='color: #f59e0b;'>Cluster {int(cluster_afro)}</strong> presenta la mayor población afroecuatoriana (Esmeraldas). 
+        Cluster 0 representa parroquias con características intermedias.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption("**Prototipo de Dashboard Analítico** • Análisis de Política Pública • 2025")
+st.markdown("""
+<div style='text-align: center; padding: 2rem 0; color: #64748b; font-size: 0.9rem;'>
+    <strong style='color: #1e293b;'>Prototipo de Dashboard Analítico</strong><br>
+    Análisis de Política Pública • 2025
+</div>
+""", unsafe_allow_html=True)

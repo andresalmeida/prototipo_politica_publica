@@ -21,11 +21,24 @@ from utils.data_loader import get_provincias, get_datos_por_provincia
 
 st.set_page_config(**PAGE_CONFIG)
 
-# Header de la página
+# Header de la página con estilo premium
 st.markdown("""
-<div style='background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;'>
-    <h1 style='color: white; margin: 0; border: none;'>🔍 Explorador de Datos</h1>
-    <p style='color: rgba(255,255,255,0.9); margin-top: 0.5rem;'>Filtros personalizados y descarga de información territorial</p>
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+<div style='
+    background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #a78bfa 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out;
+'>
+    <div style='position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);'></div>
+    <h1 style='color: white; margin: 0; border: none; position: relative; z-index: 1; font-size: 2.25rem; font-weight: 800;'>🔍 Explorador de Datos</h1>
+    <p style='color: rgba(255,255,255,0.95); margin-top: 0.75rem; position: relative; z-index: 1; font-size: 1.1rem; font-weight: 500;'>Filtros interactivos y descarga de información territorial</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -59,7 +72,12 @@ filtro_salud = st.sidebar.slider("Salud Mínima (estab/10k)", 0.0, 50.0, 0.0, 1.
 # DATOS FILTRADOS
 # ═══════════════════════════════════════════════════════════════════════
 
-st.markdown("### Datos Filtrados")
+st.markdown("""
+<div style='background: linear-gradient(90deg, #6d28d9, #8b5cf6); height: 3px; border-radius: 10px; margin: 2rem 0 1.5rem 0;'></div>
+<h3 style='color: #1e293b; font-weight: 700; margin-bottom: 1rem;'>
+    📊 Datos Filtrados
+</h3>
+""", unsafe_allow_html=True)
 
 # Cargar datos
 df_datos = get_datos_por_provincia(provincia_seleccionada)
@@ -98,7 +116,12 @@ if not df_datos.empty:
     st.markdown("---")
     
     # Tabla de datos
-    st.markdown("### Tabla de Datos")
+    st.markdown("""
+    <div style='background: linear-gradient(90deg, #6d28d9, #8b5cf6); height: 3px; border-radius: 10px; margin: 2rem 0 1.5rem 0;'></div>
+    <h3 style='color: #1e293b; font-weight: 700; margin-bottom: 1rem;'>
+        📋 Tabla de Datos
+    </h3>
+    """, unsafe_allow_html=True)
     
     # Preparar columnas
     df_display = df_filtrado[[
@@ -148,7 +171,12 @@ st.markdown("---")
 
 # Estadísticas descriptivas
 if not df_filtrado.empty:
-    st.markdown("### Estadísticas Descriptivas")
+    st.markdown("""
+    <div style='background: linear-gradient(90deg, #6d28d9, #8b5cf6); height: 3px; border-radius: 10px; margin: 2rem 0 1.5rem 0;'></div>
+    <h3 style='color: #1e293b; font-weight: 700; margin-bottom: 1rem;'>
+        📈 Estadísticas Descriptivas
+    </h3>
+    """, unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     
@@ -175,5 +203,10 @@ if not df_filtrado.empty:
         st.metric("Sin Acceso a Salud", f"{sin_salud:,}")
 
 st.markdown("---")
-st.caption("**Prototipo de Dashboard Analítico** • Análisis de Política Pública • 2025")
+st.markdown("""
+<div style='text-align: center; padding: 2rem 0; color: #64748b; font-size: 0.9rem;'>
+    <strong style='color: #1e293b;'>Prototipo de Dashboard Analítico</strong><br>
+    Análisis de Política Pública • 2025
+</div>
+""", unsafe_allow_html=True)
 

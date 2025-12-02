@@ -33,20 +33,20 @@ st.set_page_config(**PAGE_CONFIG)
 
 st.markdown("""
 <style>
-    /* Tema institucional Ecuador */
+    /* Dashboard limpio y profesional */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
-    /* Header principal */
+    /* Header limpio y elegante */
     .main-header {
-        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-        padding: 2rem 2rem 1.5rem 2rem;
-        border-radius: 10px;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        padding: 2rem;
+        border-radius: 12px;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
     }
     
     .main-header h1 {
@@ -55,57 +55,59 @@ st.markdown("""
         margin: 0;
         border: none !important;
         padding: 0 !important;
+        font-size: 2rem;
     }
     
     .main-header p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1rem;
         margin-top: 0.5rem;
+        font-weight: 400;
     }
     
-    /* Métricas mejoradas - optimizadas para fondo claro */
+    /* Métricas limpias y elegantes */
     [data-testid="stMetricValue"] {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
         font-weight: 700;
         color: #1e40af !important;
     }
     
     [data-testid="stMetricLabel"] {
-        color: #475569 !important;
+        color: #64748b !important;
         font-weight: 600;
         font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
     }
     
     [data-testid="stMetricDelta"] {
         color: #64748b !important;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 0.875rem;
     }
     
-    /* Contenedor de métricas con fondo sutil */
+    /* Contenedor de métricas simple */
     [data-testid="stMetric"] {
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        padding: 1.25rem;
-        border-radius: 12px;
-        border: 2px solid #e2e8f0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
     }
     
     [data-testid="stMetric"]:hover {
         border-color: #3b82f6;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
         transform: translateY(-2px);
     }
     
-    /* Títulos profesionales */
+    /* Títulos limpios */
     h1 {
         color: #0f172a;
         font-weight: 700;
         padding-bottom: 0.75rem;
-        border-bottom: 3px solid #3b82f6;
+        border-bottom: 2px solid #3b82f6;
         margin-bottom: 1.5rem;
     }
     
@@ -114,106 +116,122 @@ st.markdown("""
         font-weight: 600;
         margin-top: 2.5rem;
         margin-bottom: 1rem;
+        font-size: 1.5rem;
     }
     
     h3 {
         color: #334155;
         font-weight: 600;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         margin-bottom: 1rem;
     }
     
-    /* Alertas y cajas mejoradas */
+    /* Alertas simples */
     .stAlert {
-        border-radius: 10px;
+        border-radius: 8px;
         border-left: 4px solid;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
     
     [data-testid="stAlert"] {
         padding: 1rem 1.25rem;
         font-weight: 500;
+        line-height: 1.6;
     }
     
-    /* Fondo principal */
+    /* Fondo principal limpio */
     .main {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
     }
     
-    /* Bloques de código y elementos */
+    .stApp {
+        background-color: #ffffff !important;
+    }
+    
+    section.main > div {
+        background-color: #ffffff !important;
+    }
+    
+    /* Bloques de código */
     .stCodeBlock {
-        border-radius: 8px;
+        border-radius: 10px;
         border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
     
-    /* Badge de fuentes oficiales */
+    /* Badges simples */
     .source-badge {
         display: inline-block;
         background: #f1f5f9;
         color: #475569;
-        padding: 0.25rem 0.75rem;
-        border-radius: 12px;
+        padding: 0.35rem 0.85rem;
+        border-radius: 6px;
         font-size: 0.75rem;
         font-weight: 600;
         margin-right: 0.5rem;
-        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid #e2e8f0;
     }
     
-    /* Sidebar mejorado - tema claro profesional */
+    /* Sidebar limpio */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-        border-right: 2px solid #e2e8f0;
+        background: #f8fafc !important;
+        border-right: 1px solid #e2e8f0 !important;
+    }
+    
+    [data-testid="stSidebar"] * {
+        color: #1e293b !important;
     }
     
     [data-testid="stSidebar"] h3 {
-        color: #1e293b !important;
+        color: #0f172a !important;
         font-weight: 700;
     }
     
     [data-testid="stSidebar"] h4 {
-        color: #334155 !important;
+        color: #3b82f6 !important;
         font-weight: 600;
-    }
-    
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] div,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] li {
-        color: #475569 !important;
+        font-size: 0.85rem;
     }
     
     [data-testid="stSidebar"] hr {
-        border-color: #cbd5e1 !important;
+        border: none;
+        height: 1px;
+        background: #e2e8f0;
         margin: 1rem 0;
     }
     
     /* Expander en sidebar */
     [data-testid="stSidebar"] [data-testid="stExpander"] {
-        background-color: #f1f5f9;
-        border: 1px solid #cbd5e1;
+        background: white;
+        border: 1px solid #e2e8f0;
         border-radius: 8px;
     }
     
     /* Botones en sidebar */
     [data-testid="stSidebar"] button {
-        background-color: #3b82f6 !important;
+        background: #3b82f6 !important;
         color: white !important;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
+        border: none !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
     }
     
     [data-testid="stSidebar"] button:hover {
-        background-color: #2563eb !important;
+        background: #2563eb !important;
     }
     
-    /* Footer institucional */
+    /* Footer simple */
     .footer {
         margin-top: 3rem;
-        padding: 2rem 0 1rem 0;
-        border-top: 2px solid #e2e8f0;
+        padding: 2rem 0;
+        border-top: 1px solid #e2e8f0;
         text-align: center;
         color: #64748b;
+    }
+    
+    .footer strong {
+        color: #1e293b;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -262,15 +280,15 @@ with st.sidebar:
 # CONTENIDO PRINCIPAL
 # ═══════════════════════════════════════════════════════════════════════
 
-# Header principal con diseño institucional
+# Header limpio
 st.markdown("""
 <div class="main-header">
     <h1>🛢️ Paradoja Extractivista en Ecuador</h1>
-    <p>Análisis Geoespacial • Infraestructura Petrolera vs. Acceso a Servicios de Salud</p>
+    <p>Análisis Geoespacial: Infraestructura Petrolera vs. Acceso a Servicios de Salud</p>
 </div>
 """, unsafe_allow_html=True)
 
-# Badges de fuentes oficiales
+# Badges de fuentes
 st.markdown("""
 <div style='margin-bottom: 1.5rem;'>
     <span class='source-badge'>📊 CONALI</span>
@@ -281,20 +299,97 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Hallazgo principal destacado
-st.markdown("### 🎯 Hallazgo Principal")
+# Hallazgos principales con cards profesionales
+st.markdown("### 🎯 Hallazgos Principales del Análisis")
+st.markdown("")
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns(2, gap="large")
 
 with col1:
-    st.info("**⚠️ Paradoja Extractivista**: Las parroquias con actividad petrolera tienen **33% menos acceso** a servicios de salud (5.87 vs 8.88 establecimientos por 10,000 habitantes).")
+    st.markdown("""
+    <div style='
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #ef4444;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        height: 100%;
+    '>
+        <div style='display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;'>
+            <div style='font-size: 2rem;'>⚠️</div>
+            <h4 style='margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;'>
+                Paradoja Extractivista Confirmada
+            </h4>
+        </div>
+        <p style='color: #475569; line-height: 1.7; margin-bottom: 1rem;'>
+            Las parroquias con actividad petrolera presentan <strong style='color: #ef4444;'>33% menos acceso</strong> a servicios de salud:
+        </p>
+        <div style='background: #fef2f2; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;'>
+            <div style='display: flex; justify-content: space-between; margin-bottom: 0.5rem;'>
+                <span style='color: #64748b; font-size: 0.9rem;'>Con petróleo:</span>
+                <strong style='color: #ef4444; font-size: 1.1rem;'>5.87</strong>
+            </div>
+            <div style='display: flex; justify-content: space-between;'>
+                <span style='color: #64748b; font-size: 0.9rem;'>Sin petróleo:</span>
+                <strong style='color: #10b981; font-size: 1.1rem;'>8.88</strong>
+            </div>
+            <div style='margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #fee2e2;'>
+                <span style='color: #64748b; font-size: 0.85rem;'>Establecimientos por 10,000 habitantes</span>
+            </div>
+        </div>
+        <p style='color: #64748b; font-size: 0.9rem; font-style: italic; margin: 0;'>
+            La extracción de recursos no se traduce en mejor bienestar local.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col2:
-    st.success("**✓ Hallazgo Relevante**: Las comunidades afroecuatorianas (principalmente en Esmeraldas) **NO están expuestas** a actividad petrolera significativa, contrario a percepciones comunes.")
+    st.markdown("""
+    <div style='
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #3b82f6;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        height: 100%;
+    '>
+        <div style='display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;'>
+            <div style='font-size: 2rem;'>📍</div>
+            <h4 style='margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;'>
+                Distribución Étnico-Territorial
+            </h4>
+        </div>
+        <p style='color: #475569; line-height: 1.7; margin-bottom: 1rem;'>
+            Las comunidades afroecuatorianas <strong style='color: #3b82f6;'>NO están expuestas</strong> a actividad petrolera significativa:
+        </p>
+        <div style='background: #eff6ff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;'>
+            <div style='margin-bottom: 0.75rem;'>
+                <div style='color: #1e40af; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;'>
+                    ✓ Sin intersección geográfica fuerte
+                </div>
+                <div style='color: #64748b; font-size: 0.85rem; padding-left: 1.25rem;'>
+                    Zonas afro vs. zonas petroleras separadas
+                </div>
+            </div>
+            <div>
+                <div style='color: #1e40af; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;'>
+                    ✓ Concentración diferenciada
+                </div>
+                <div style='color: #64748b; font-size: 0.85rem; padding-left: 1.25rem;'>
+                    Esmeraldas (costa) ≠ Amazonía (petróleo)
+                </div>
+            </div>
+        </div>
+        <p style='color: #64748b; font-size: 0.9rem; font-style: italic; margin: 0;'>
+            Contrario a percepciones comunes sobre impacto desproporcional.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
-st.markdown("### Métricas Clave")
+st.markdown("### 📊 Métricas Clave")
+st.markdown("---")
 
 # Obtener métricas desde archivos CSV
 df_metricas = get_metricas_generales()
@@ -330,8 +425,8 @@ if not df_metricas.empty:
         )
     
     st.markdown("---")
+    st.markdown("### ⚖️ Comparación: Acceso a Salud")
     
-    # Comparación de salud
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -388,12 +483,12 @@ with st.expander("📖 Metodología y Fuentes de Datos Oficiales"):
         - Estadística inferencial (correlaciones, pruebas no paramétricas)
         """)
 
-# Footer institucional
+# Footer simple
 st.markdown("""
 <div class='footer'>
     <strong>Prototipo de Dashboard Analítico</strong><br>
     Sistema de análisis geoespacial para evaluación de política pública<br>
-    <small>Datos oficiales • Periodo 2020-2022</small>
+    <small>Datos oficiales • Periodo 2020-2022 • CONALI, INEC, MSP, MAATE</small>
 </div>
 """, unsafe_allow_html=True)
 
