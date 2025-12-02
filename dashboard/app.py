@@ -63,16 +63,15 @@ st.markdown("""
         margin-top: 0.5rem;
     }
     
-    /* Métricas mejoradas - colores brillantes para mejor visibilidad */
+    /* Métricas mejoradas - optimizadas para fondo claro */
     [data-testid="stMetricValue"] {
         font-size: 2.25rem;
         font-weight: 700;
-        color: #60a5fa !important;
-        text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        color: #1e40af !important;
     }
     
     [data-testid="stMetricLabel"] {
-        color: #94a3b8 !important;
+        color: #475569 !important;
         font-weight: 600;
         font-size: 0.75rem;
         text-transform: uppercase;
@@ -80,23 +79,30 @@ st.markdown("""
     }
     
     [data-testid="stMetricDelta"] {
-        color: #cbd5e1 !important;
+        color: #64748b !important;
         font-weight: 600;
         font-size: 0.875rem;
     }
     
     /* Contenedor de métricas con fondo sutil */
     [data-testid="stMetric"] {
-        background-color: rgba(30, 41, 59, 0.5);
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         padding: 1.25rem;
         border-radius: 12px;
-        border: 1px solid rgba(96, 165, 250, 0.2);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
     }
     
-    /* Títulos */
+    [data-testid="stMetric"]:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        transform: translateY(-2px);
+    }
+    
+    /* Títulos profesionales */
     h1 {
-        color: #1e293b;
+        color: #0f172a;
         font-weight: 700;
         padding-bottom: 0.75rem;
         border-bottom: 3px solid #3b82f6;
@@ -104,27 +110,40 @@ st.markdown("""
     }
     
     h2 {
-        color: #334155;
+        color: #1e293b;
         font-weight: 600;
         margin-top: 2.5rem;
         margin-bottom: 1rem;
     }
     
     h3 {
-        color: #475569;
+        color: #334155;
         font-weight: 600;
         margin-top: 1.5rem;
+        margin-bottom: 1rem;
     }
     
-    /* Alertas y cajas */
+    /* Alertas y cajas mejoradas */
     .stAlert {
-        border-radius: 8px;
+        border-radius: 10px;
         border-left: 4px solid;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
     
-    /* Info boxes mejoradas */
     [data-testid="stAlert"] {
         padding: 1rem 1.25rem;
+        font-weight: 500;
+    }
+    
+    /* Fondo principal */
+    .main {
+        background-color: #ffffff;
+    }
+    
+    /* Bloques de código y elementos */
+    .stCodeBlock {
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
     }
     
     /* Badge de fuentes oficiales */
@@ -140,43 +159,52 @@ st.markdown("""
         margin-top: 0.25rem;
     }
     
-    /* Sidebar mejorado - tema oscuro para mejor contraste */
+    /* Sidebar mejorado - tema claro profesional */
     [data-testid="stSidebar"] {
-        background-color: #1e293b !important;
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border-right: 2px solid #e2e8f0;
     }
     
-    [data-testid="stSidebar"] * {
-        color: #f1f5f9 !important;
+    [data-testid="stSidebar"] h3 {
+        color: #1e293b !important;
+        font-weight: 700;
     }
     
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3,
     [data-testid="stSidebar"] h4 {
-        color: #ffffff !important;
+        color: #334155 !important;
+        font-weight: 600;
     }
     
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] div,
     [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] li {
-        color: #e2e8f0 !important;
+        color: #475569 !important;
     }
     
     [data-testid="stSidebar"] hr {
-        border-color: #475569 !important;
+        border-color: #cbd5e1 !important;
+        margin: 1rem 0;
     }
     
     /* Expander en sidebar */
     [data-testid="stSidebar"] [data-testid="stExpander"] {
-        background-color: #334155;
-        border-color: #475569;
+        background-color: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
     }
     
     /* Botones en sidebar */
     [data-testid="stSidebar"] button {
         background-color: #3b82f6 !important;
         color: white !important;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+    
+    [data-testid="stSidebar"] button:hover {
+        background-color: #2563eb !important;
     }
     
     /* Footer institucional */
