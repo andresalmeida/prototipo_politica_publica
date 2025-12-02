@@ -459,8 +459,6 @@ else:
 
 st.markdown("---")
 
-st.markdown("---")
-
 # Contexto metodológico
 with st.expander("📖 Metodología y Fuentes de Datos Oficiales"):
     col1, col2 = st.columns(2)
