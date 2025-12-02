@@ -33,8 +33,8 @@ DB_CONFIG = {
 # ───────────────────────────────────────────────────────────────────────
 
 PAGE_CONFIG = {
-    'page_title': 'Paradoja Extractivista Ecuador • Dashboard Analítico',
-    'page_icon': '🛢️',
+    'page_title': 'Análisis de Política Pública • Ecuador',
+    'page_icon': '📊',
     'layout': 'wide',
     'initial_sidebar_state': 'expanded',
     'menu_items': {

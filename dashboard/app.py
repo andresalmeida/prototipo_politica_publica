@@ -283,7 +283,7 @@ with st.sidebar:
 # Header limpio
 st.markdown("""
 <div class="main-header">
-    <h1>🛢️ Paradoja Extractivista en Ecuador</h1>
+    <h1>Análisis Geoespacial - Evaluación de Política Pública</h1>
     <p>Análisis Geoespacial: Infraestructura Petrolera vs. Acceso a Servicios de Salud</p>
 </div>
 """, unsafe_allow_html=True)
