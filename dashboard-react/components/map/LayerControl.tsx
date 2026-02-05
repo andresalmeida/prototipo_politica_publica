@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Eye, EyeOff, Layers } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
-import { useMapStore } from "@/store"
-import { CLUSTER_COLORS } from "@/lib/map/layers"
+import { cn } from "../../lib/utils"
+import { Button } from "../ui/button"
+import { Slider } from "../ui/slider"
+import { Switch } from "../ui/switch"
+import { useMapStore } from "../../store"
+import { CLUSTER_COLORS } from "../../lib/map/layers"
 
 const layerInfo = [
   { id: "parroquias", name: "Parroquias por Cluster", color: null },

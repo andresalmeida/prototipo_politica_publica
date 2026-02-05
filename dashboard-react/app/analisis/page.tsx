@@ -2,17 +2,17 @@
 
 import { motion } from "framer-motion"
 import { BarChart3, TrendingDown, Users, Droplets } from "lucide-react"
-import { Header } from "@/components/layout/Header"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CorrelationChart } from "@/components/charts/CorrelationChart"
-import { BarChart } from "@/components/charts/BarChart"
+import { Header } from "../../components/layout/Header"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { CorrelationChart } from "../../components/charts/CorrelationChart"
+import { BarChart } from "../../components/charts/BarChart"
 import {
   useParroquias,
   useClusterStats,
   useScatterData,
   useMetrics,
-} from "@/hooks/useData"
-import { formatNumber, formatPercent } from "@/lib/utils"
+} from "../../hooks/useData"
+import { formatNumber, formatPercent } from "../../lib/utils"
 
 export default function AnalisisPage() {
   const { data: parroquias, loading: loadingParroquias } = useParroquias()

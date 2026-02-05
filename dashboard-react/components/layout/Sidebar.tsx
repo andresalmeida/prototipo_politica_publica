@@ -14,9 +14,9 @@ import {
   HeartPulse,
   Users,
 } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { useUIStore } from "@/store"
+import { cn } from "../../lib/utils"
+import { Button } from "../ui/button"
+import { useUIStore } from "../../store"
 
 const navItems = [
   { href: "/", label: "Inicio", icon: Home },

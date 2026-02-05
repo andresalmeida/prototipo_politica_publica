@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useMemo } from "react"
-import type { Parroquia, ClusterStats, GeoJSONData } from "@/types"
+import type { Parroquia, ClusterStats, GeoJSONData } from "../types"
 import {
   loadParroquias,
   loadClusterStats,
@@ -9,7 +9,7 @@ import {
   getProvincias,
   filterParroquias,
   getMetrics,
-} from "@/lib/data/loader"
+} from "../lib/data/loader"
 
 export function useParroquias() {
   const [data, setData] = useState<Parroquia[]>([])

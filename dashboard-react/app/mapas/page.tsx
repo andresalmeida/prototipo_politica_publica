@@ -3,21 +3,21 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Map, Filter } from "lucide-react"
-import { Header } from "@/components/layout/Header"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapContainer } from "@/components/map/MapContainer"
-import { LayerControl } from "@/components/map/LayerControl"
-import { useParroquias, useProvincias, useFilteredParroquias } from "@/hooks/useData"
-import { useFilterStore } from "@/store"
+import { Header } from "../../components/layout/Header"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { MapContainer } from "../../components/map/MapContainer"
+import { LayerControl } from "../../components/map/LayerControl"
+import { useParroquias, useProvincias, useFilteredParroquias } from "../../hooks/useData"
+import { useFilterStore } from "../../store"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { getClusterColor, getClusterLabel } from "@/lib/utils"
+} from "../../components/ui/select"
+import { Badge } from "../../components/ui/badge"
+import { getClusterColor, getClusterLabel } from "../../lib/utils"
 
 export default function MapasPage() {
   const { data: parroquias, loading } = useParroquias()

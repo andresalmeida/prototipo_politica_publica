@@ -10,9 +10,9 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { ClusterStats } from "@/types"
-import { getClusterColor, getClusterLabel } from "@/lib/utils"
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import type { ClusterStats } from "../../types"
+import { getClusterColor, getClusterLabel } from "../../lib/utils"
 
 interface BarChartProps {
   data: ClusterStats[]

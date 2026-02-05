@@ -3,15 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
-import { useMapStore } from "@/store"
-import type { Parroquia } from "@/types"
+import { useMapStore } from "../../store"
+import type { Parroquia } from "../../types"
 import {
   getParroquiasLayer,
   getInfraestructuraLayer,
   getSaludLayer,
   getHighlightLayer,
   CLUSTER_COLORS,
-} from "@/lib/map/layers"
+} from "../../lib/map/layers"
 import { AlertTriangle } from "lucide-react"
 
 interface MapContainerProps {

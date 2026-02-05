@@ -3,26 +3,26 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Search, Filter, Download, ChevronDown, ChevronUp } from "lucide-react"
-import { Header } from "@/components/layout/Header"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Header } from "../../components/layout/Header"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { Input } from "../../components/ui/input"
+import { Button } from "../../components/ui/button"
+import { Badge } from "../../components/ui/badge"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "../../components/ui/select"
 import {
   useParroquias,
   useProvincias,
   useFilteredParroquias,
-} from "@/hooks/useData"
-import { useFilterStore } from "@/store"
-import { formatNumber, formatPercent, getClusterColor, getClusterLabel } from "@/lib/utils"
-import type { Parroquia } from "@/types"
+} from "../../hooks/useData"
+import { useFilterStore } from "../../store"
+import { formatNumber, formatPercent, getClusterColor, getClusterLabel } from "../../lib/utils"
+import type { Parroquia } from "../../types"
 
 export default function ExploradorPage() {
   const { data: parroquias, loading } = useParroquias()
