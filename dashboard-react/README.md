@@ -112,4 +112,4 @@ Los datos se convierten automáticamente desde los archivos CSV originales:
 
 ## 📄 Licencia
 
-TFM - Máster en Análisis de Datos Masivos
+Dashboard de Análisis Geoespacial - Ecuador

@@ -63,9 +63,11 @@ export function Sidebar() {
           width: sidebarOpen ? 280 : 0,
           opacity: sidebarOpen ? 1 : 0,
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen bg-card border-r border-border overflow-hidden",
+          "fixed left-0 top-0 z-40 h-screen overflow-hidden",
+          "bg-gradient-to-b from-card/95 to-card/80 backdrop-blur-xl",
+          "border-r border-white/10 shadow-2xl",
           "lg:relative lg:w-72 lg:opacity-100"
         )}
       >
@@ -139,7 +141,9 @@ export function Sidebar() {
 
           {/* Footer */}
           <div className="p-4 border-t border-border text-xs text-muted-foreground text-center">
-            TFM - Análisis de Datos Masivos
+            <span className="font-medium">Extractivismo Ecuador</span>
+            <span className="mx-2">·</span>
+            <span>2025</span>
           </div>
         </div>
       </motion.aside>
