@@ -40,9 +40,7 @@ env/
 # Environment variables
 .env
 .env.local
-
-# Streamlit
-.streamlit/secrets.toml
+.env.production
 
 # Database (ya no se usa)
 *.db
@@ -60,3 +58,37 @@ temp/
 data/geo/parroquias.geojson
 data/geo/parroquias_analisis_completo.geojson
 
+# ═══════════════════════════════════════════════════════════════════════
+# Next.js / React
+# ═══════════════════════════════════════════════════════════════════════
+
+# Dependencies
+dashboard-react/node_modules/
+dashboard-react/.pnp
+dashboard-react/.pnp.js
+
+# Testing
+dashboard-react/coverage/
+
+# Next.js
+dashboard-react/.next/
+dashboard-react/out/
+
+# Production
+dashboard-react/build/
+
+# Misc
+dashboard-react/.DS_Store
+dashboard-react/*.pem
+
+# Debug
+dashboard-react/npm-debug.log*
+dashboard-react/yarn-debug.log*
+dashboard-react/yarn-error.log*
+
+# Vercel
+dashboard-react/.vercel
+
+# TypeScript
+dashboard-react/*.tsbuildinfo
+dashboard-react/next-env.d.ts

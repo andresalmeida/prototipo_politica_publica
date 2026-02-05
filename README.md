@@ -6,50 +6,63 @@ Dashboard interactivo para el análisis geoespacial de la relación entre infrae
 
 **Las parroquias con actividad petrolera tienen 33% menos acceso a servicios de salud** (5.87 vs 8.88 establecimientos por 10,000 habitantes).
 
-## 🚀 Visualización en [Streamlit Cloud](https://prototipopoliticapublica-ecuador.streamlit.app/)
+## 🚀 Ejecutar el Dashboard
 
-## Opción 2: Ejecutar Localmente
+### Requisitos Previos
+- Node.js 18+ y npm
+
+### Instalación y Ejecución
 
 ```bash
-# 1. Instalar dependencias
-pip install -r requirements.txt
+# 1. Navegar al directorio del dashboard
+cd dashboard-react
 
-# 2. Ejecutar el dashboard
-cd dashboard
-streamlit run app.py
+# 2. Instalar dependencias
+npm install
+
+# 3. Ejecutar en modo desarrollo
+npm run dev
+
+# 4. Construir para producción
+npm run build
+npm start
 ```
 
-El dashboard estará disponible en: `http://localhost:8501`
+El dashboard estará disponible en: `http://localhost:3000`
 
 ## 📁 Estructura del Proyecto
 
 ```
 prototipo_tfm/
-├── dashboard/
-│   ├── app.py                 # Página principal
-│   ├── config.py              # Configuración
-│   ├── pages/
-│   │   ├── 1_Overview.py      # Análisis general
-│   │   ├── 3_Analisis_Espacial.py  # Mapas y clustering
-│   │   └── 4_Explorador_Datos.py   # Explorador interactivo
-│   └── utils/
-│       ├── data_loader.py     # Carga de datos desde CSV
-│       └── __init__.py
+├── dashboard-react/           # Dashboard React + Next.js
+│   ├── app/                   # Páginas de la aplicación
+│   │   ├── page.tsx          # Página principal
+│   │   ├── analisis/         # Análisis general
+│   │   ├── mapas/            # Mapas y territorios
+│   │   └── explorador/       # Explorador de datos
+│   ├── components/           # Componentes reutilizables
+│   │   ├── charts/           # Gráficos (Recharts)
+│   │   ├── map/              # Mapas (Mapbox GL)
+│   │   ├── layout/           # Layout (Header, Sidebar)
+│   │   └── ui/               # Componentes UI (shadcn/ui)
+│   ├── hooks/                # Custom hooks
+│   ├── store/                # Estado global (Zustand)
+│   ├── types/                # TypeScript types
+│   └── public/data/          # Datos estáticos (JSON)
 ├── data/
-│   ├── processed/             # Datos procesados (CSV)
-│   │   └── parroquias_con_clusters.csv
-│   └── geo/                   # Datos geoespaciales (GeoJSON)
-│       └── parroquias_analisis_completo.geojson
-├── requirements.txt           # Dependencias
-└── README.md                  # Este archivo
+│   ├── processed/            # Datos procesados (CSV)
+│   └── geo/                  # Datos geoespaciales (GeoJSON)
+├── plans/                    # Documentación de arquitectura
+└── README.md                 # Este archivo
 ```
 
 ## 📦 Datos
 
-El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
+El dashboard usa **solo archivos estáticos** (JSON y GeoJSON), por lo que:
 - ✅ No requiere base de datos
 - ✅ Carga rápida con caché
 - ✅ Portable y fácil de replicar
+- ✅ Deploy sencillo en Vercel/Netlify
 
 ### Fuentes de Datos
 
@@ -60,10 +73,20 @@ El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 
 ## 🔧 Tecnologías
 
-- **Streamlit** - Framework web para Python
-- **Pandas & GeoPandas** - Análisis de datos
-- **Plotly** - Visualizaciones interactivas
-- **Scikit-learn** - Clustering (K-Means)
+### Frontend
+- **Next.js 14** - Framework React con App Router
+- **TypeScript** - Tipado estático
+- **Tailwind CSS** - Estilos utility-first
+- **shadcn/ui** - Componentes UI accesibles
+
+### Visualización
+- **Mapbox GL JS** - Mapas interactivos WebGL
+- **Recharts** - Gráficos responsivos
+- **Lucide React** - Iconos modernos
+
+### Estado y Datos
+- **Zustand** - Estado global ligero
+- **SWR** - Fetching y caché de datos
 
 ## 📈 Características
 
@@ -71,31 +94,37 @@ El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 - Métricas clave del análisis
 - Comparación: parroquias con/sin petróleo
 - Resumen de hallazgos
+- Navegación intuitiva
 
-### 2. Overview
+### 2. Análisis General
 - Scatter plot: Petróleo vs Salud
 - Top 10 parroquias petroleras
 - Análisis por provincia
 - Población afroecuatoriana
+- Gráficos interactivos
 
-### 3. Análisis Espacial
-- 4 mapas interactivos
+### 3. Mapas y Territorios
+- Mapas interactivos con Mapbox GL
+- Control de capas múltiples
 - Clustering K-Means (4 grupos)
 - Análisis de paradoja extractivista
 - Caracterización de clusters
+- Zoom y navegación fluida
 
 ### 4. Explorador de Datos
-- Filtros por provincia
+- Filtros por provincia y cluster
+- Búsqueda en tiempo real
 - Descarga de datos (CSV)
 - Estadísticas descriptivas
-- Tablas interactivas
+- Tablas interactivas con paginación
 
 ## 📝 Metodología
 
-1. **ETL**: 7 notebooks de procesamiento de datos
+1. **ETL**: Procesamiento de datos con Python/Pandas
 2. **Análisis Espacial**: Spatial joins con coordenadas
 3. **Clustering**: K-Means (4 clusters)
 4. **Estadística**: Correlaciones y pruebas no paramétricas
+5. **Visualización**: Dashboard React moderno
 
 ## 🌍 Hallazgos Clave
 
@@ -103,6 +132,42 @@ El dashboard usa **solo archivos estáticos** (CSV y GeoJSON), por lo que:
 2. **Concentración Geográfica**: 50 parroquias (4%) tienen el 99% de la infraestructura petrolera
 3. **Amazonía**: Región más afectada (Sucumbíos, Orellana)
 4. **Población Afroecuatoriana**: Mayormente en Esmeraldas, SIN exposición significativa a petróleo
+
+## 🚀 Deploy
+
+> 📖 **Guía detallada**: Ver [`DEPLOY.md`](./dashboard-react/DEPLOY.md) para instrucciones completas.
+
+### ⚙️ Requisito Previo: Mapbox Token
+
+Antes de desplegar, necesitas un token de Mapbox (gratuito, 50,000 cargas/mes):
+1. Crea cuenta en https://account.mapbox.com/
+2. Copia tu token público
+
+### 🌟 Vercel (Recomendado)
+
+```bash
+cd dashboard-react
+
+# Configurar variable de entorno
+vercel env add NEXT_PUBLIC_MAPBOX_TOKEN
+
+# Deploy
+vercel --prod
+```
+
+### 🌐 Netlify
+
+```bash
+cd dashboard-react
+
+# Crear .env.local localmente
+echo "NEXT_PUBLIC_MAPBOX_TOKEN=pk.tu_token" > .env.local
+
+npm run build
+npx netlify deploy --prod --dir=dist
+```
+
+> 🔒 **IMPORTANTE**: Nunca commitees archivos `.env.local`. El proyecto incluye `.env.local.example` como template.
 
 ## 🤝 Contribuciones
 
@@ -126,5 +191,4 @@ Este proyecto es un prototipo desarrollado para análisis de política pública 
 
 ---
 
-**Nota**: Este dashboard fue optimizado para funcionar sin base de datos, usando solo archivos CSV/GeoJSON. Todos los datos están pre-procesados y listos para visualización.
-
+**Nota**: Este dashboard fue migrado de Streamlit a React + Next.js para mejor rendimiento, experiencia de usuario moderna y facilidad de deploy.

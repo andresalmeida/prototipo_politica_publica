@@ -1,0 +1,46 @@
+[
+  {
+    "cluster_kmeans": 0,
+    "n_parroquias": 335,
+    "pob_total": 1883609,
+    "pob_afro": 17539,
+    "pct_afro_mean": 0.34,
+    "n_establecimientos": 803,
+    "estab_10k_mean": 10.54,
+    "n_infraestructura": 20,
+    "densidad_petroleo_mean": 0.01
+  },
+  {
+    "cluster_kmeans": 1,
+    "n_parroquias": 478,
+    "pob_total": 7055171,
+    "pob_afro": 91621,
+    "pct_afro_mean": 1.05,
+    "n_establecimientos": 1731,
+    "estab_10k_mean": 5.26,
+    "n_infraestructura": 6145,
+    "densidad_petroleo_mean": 0.03
+  },
+  {
+    "cluster_kmeans": 2,
+    "n_parroquias": 31,
+    "pob_total": 125137,
+    "pob_afro": 53021,
+    "pct_afro_mean": 45.32,
+    "n_establecimientos": 74,
+    "estab_10k_mean": 11.85,
+    "n_infraestructura": 0,
+    "densidad_petroleo_mean": 0
+  },
+  {
+    "cluster_kmeans": 3,
+    "n_parroquias": 3,
+    "pob_total": 174904,
+    "pob_afro": 1899,
+    "pct_afro_mean": 1.07,
+    "n_establecimientos": 30,
+    "estab_10k_mean": 1.81,
+    "n_infraestructura": 1277,
+    "densidad_petroleo_mean": 6.77
+  }
+]
