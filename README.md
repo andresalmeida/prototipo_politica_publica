@@ -133,42 +133,6 @@ El dashboard usa **solo archivos estáticos** (JSON y GeoJSON), por lo que:
 3. **Amazonía**: Región más afectada (Sucumbíos, Orellana)
 4. **Población Afroecuatoriana**: Mayormente en Esmeraldas, SIN exposición significativa a petróleo
 
-## 🚀 Deploy
-
-> 📖 **Guía detallada**: Ver [`DEPLOY.md`](./dashboard-react/DEPLOY.md) para instrucciones completas.
-
-### ⚙️ Requisito Previo: Mapbox Token
-
-Antes de desplegar, necesitas un token de Mapbox (gratuito, 50,000 cargas/mes):
-1. Crea cuenta en https://account.mapbox.com/
-2. Copia tu token público
-
-### 🌟 Vercel (Recomendado)
-
-```bash
-cd dashboard-react
-
-# Configurar variable de entorno
-vercel env add NEXT_PUBLIC_MAPBOX_TOKEN
-
-# Deploy
-vercel --prod
-```
-
-### 🌐 Netlify
-
-```bash
-cd dashboard-react
-
-# Crear .env.local localmente
-echo "NEXT_PUBLIC_MAPBOX_TOKEN=pk.tu_token" > .env.local
-
-npm run build
-npx netlify deploy --prod --dir=dist
-```
-
-> 🔒 **IMPORTANTE**: Nunca commitees archivos `.env.local`. El proyecto incluye `.env.local.example` como template.
-
 ## 🤝 Contribuciones
 
 Este es un proyecto académico. Para preguntas o colaboraciones:
@@ -177,7 +141,7 @@ Este es un proyecto académico. Para preguntas o colaboraciones:
 
 ## 📄 Licencia
 
-**Copyright © 2025 - Todos los derechos reservados**
+**Copyright © 2026 - Todos los derechos reservados**
 
 Este proyecto es un prototipo desarrollado para análisis de política pública en Ecuador.
 
