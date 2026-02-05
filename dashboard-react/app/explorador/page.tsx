@@ -21,7 +21,7 @@ import {
   useFilteredParroquias,
 } from "../../hooks/useData"
 import { useFilterStore } from "../../store"
-import { formatNumber, formatPercent, getClusterColor, getClusterLabel } from "../../lib/utils"
+import { formatNumber, formatPercent, getClusterColor, getClusterLabel } from "../../lib"
 import type { Parroquia } from "../../types"
 
 export default function ExploradorPage() {

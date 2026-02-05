@@ -12,7 +12,7 @@ import {
 } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import type { ClusterStats } from "../../types"
-import { getClusterColor, getClusterLabel } from "../../lib/utils"
+import { getClusterColor, getClusterLabel } from "../../lib"
 
 interface BarChartProps {
   data: ClusterStats[]

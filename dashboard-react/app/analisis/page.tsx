@@ -12,7 +12,7 @@ import {
   useScatterData,
   useMetrics,
 } from "../../hooks/useData"
-import { formatNumber, formatPercent } from "../../lib/utils"
+import { formatNumber, formatPercent } from "../../lib"
 
 export default function AnalisisPage() {
   const { data: parroquias, loading: loadingParroquias } = useParroquias()

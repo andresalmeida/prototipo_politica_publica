@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "../../components/ui/select"
 import { Badge } from "../../components/ui/badge"
-import { getClusterColor, getClusterLabel } from "../../lib/utils"
+import { getClusterColor, getClusterLabel } from "../../lib"
 
 export default function MapasPage() {
   const { data: parroquias, loading } = useParroquias()

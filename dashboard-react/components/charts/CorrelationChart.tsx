@@ -12,7 +12,7 @@ import {
   ReferenceLine,
 } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
-import { getClusterColor } from "../../lib/utils"
+import { getClusterColor } from "../../lib"
 
 interface CorrelationChartProps {
   data: Array<{

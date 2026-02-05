@@ -17,7 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Button } from "../components/ui/button"
 import { Badge } from "../components/ui/badge"
 import { useParroquias, useClusterStats, useMetrics } from "../hooks/useData"
-import { formatNumber, formatPercent } from "../lib/utils"
+import { formatNumber, formatPercent } from "../lib"
 
 const containerVariants = {
   hidden: { opacity: 0 },

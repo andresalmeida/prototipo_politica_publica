@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Eye, EyeOff, Layers } from "lucide-react"
-import { cn } from "../../lib/utils"
+import { cn } from "../../lib"
 import { Button } from "../ui/button"
 import { Slider } from "../ui/slider"
 import { Switch } from "../ui/switch"
