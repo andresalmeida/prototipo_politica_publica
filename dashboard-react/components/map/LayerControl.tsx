@@ -17,9 +17,9 @@ const layerInfo = [
 
 const clusterLabels: Record<number, string> = {
   0: "Sin Petróleo",
-  1: "Alta Actividad",
-  2: "Actividad Moderada",
-  3: "Alta Población Afro",
+  1: "Petrolero Moderado",
+  2: "Comunidades Afroecuatorianas",
+  3: "Alta Actividad Petrolera",
 }
 
 export function LayerControl() {

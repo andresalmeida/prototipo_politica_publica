@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Sidebar } from "../components/layout/Sidebar"
+import { ThemeProvider } from "../components/providers/ThemeProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,12 +18,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="flex h-screen bg-background">
-          <Sidebar />
-          <main className="flex-1 overflow-auto p-6 lg:p-8">{children}</main>
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <div className="flex h-screen bg-background">
+            <Sidebar />
+            <main className="flex-1 overflow-auto p-6 lg:p-8">{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

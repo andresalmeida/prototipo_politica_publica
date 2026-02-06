@@ -160,28 +160,40 @@ export default function AnalisisPage() {
       >
         <div className="flex items-center gap-2 mb-4">
           <Zap className="w-5 h-5 text-amber-500" />
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-foreground">
             Visualización de la Paradoja
           </h2>
-          <div className="flex-1 h-px bg-gradient-to-r from-gray-200 to-transparent ml-3" />
+          <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent ml-3" />
         </div>
 
-        {/* Three-panel layout matching the reference image */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Stacked layout — one chart per row for better readability */}
+        <div className="space-y-8">
           {/* Panel 1: Scatter Plot — Petróleo vs Salud */}
-          <div className="lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
             <ScatterPlotParadox data={scatterDataEnhanced} />
-          </div>
+          </motion.div>
 
           {/* Panel 2: Box Plot — Acceso a Salud por Cluster */}
-          <div className="lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
             <BoxPlotCluster data={parroquias} />
-          </div>
+          </motion.div>
 
           {/* Panel 3: Grouped Bar — Paradoja */}
-          <div className="lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+          >
             <ParadoxBarChart data={clusters} />
-          </div>
+          </motion.div>
         </div>
       </motion.div>
 
@@ -193,10 +205,10 @@ export default function AnalisisPage() {
       >
         <div className="flex items-center gap-2 mb-4">
           <Activity className="w-5 h-5 text-indigo-500" />
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-foreground">
             Caracterización de Clusters
           </h2>
-          <div className="flex-1 h-px bg-gradient-to-r from-gray-200 to-transparent ml-3" />
+          <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent ml-3" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -206,14 +218,14 @@ export default function AnalisisPage() {
                 .map((_, i) => (
                   <div
                     key={i}
-                    className="animate-pulse rounded-2xl border border-gray-100 bg-white p-6"
+                    className="animate-pulse rounded-2xl border border-border bg-card p-6"
                   >
-                    <div className="h-4 bg-gray-100 rounded w-3/4 mb-3" />
-                    <div className="h-8 bg-gray-100 rounded w-1/2 mb-4" />
+                    <div className="h-4 bg-muted rounded w-3/4 mb-3" />
+                    <div className="h-8 bg-muted rounded w-1/2 mb-4" />
                     <div className="space-y-2">
-                      <div className="h-3 bg-gray-50 rounded" />
-                      <div className="h-3 bg-gray-50 rounded w-5/6" />
-                      <div className="h-3 bg-gray-50 rounded w-4/6" />
+                      <div className="h-3 bg-muted/50 rounded" />
+                      <div className="h-3 bg-muted/50 rounded w-5/6" />
+                      <div className="h-3 bg-muted/50 rounded w-4/6" />
                     </div>
                   </div>
                 ))
@@ -232,10 +244,10 @@ export default function AnalisisPage() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ delay: 0.7 + i * 0.1 }}
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                      className={`relative overflow-hidden rounded-2xl border bg-white p-5 transition-shadow duration-300 hover:shadow-lg ${
+                      className={`relative overflow-hidden rounded-2xl border bg-card p-5 transition-shadow duration-300 hover:shadow-lg ${
                         isHighRisk
-                          ? "border-red-200 shadow-red-100/50"
-                          : "border-gray-100"
+                          ? "border-red-200 dark:border-red-800 shadow-red-100/50 dark:shadow-red-900/30"
+                          : "border-border"
                       }`}
                     >
                       {/* Color accent bar */}
@@ -247,7 +259,7 @@ export default function AnalisisPage() {
                       {/* High risk badge */}
                       {isHighRisk && (
                         <div className="absolute top-3 right-3">
-                          <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-1 rounded-full">
+                          <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/50 px-2 py-1 rounded-full">
                             <AlertTriangle className="w-3 h-3" />
                             Riesgo
                           </span>
@@ -263,10 +275,10 @@ export default function AnalisisPage() {
                           C{cluster.cluster_kmeans}
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-gray-900">
+                          <h3 className="text-sm font-bold text-foreground">
                             {getClusterLabel(cluster.cluster_kmeans)}
                           </h3>
-                          <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
                             {cluster.n_parroquias} parroquias
                           </p>
                         </div>
@@ -275,21 +287,21 @@ export default function AnalisisPage() {
                       {/* Stats */}
                       <div className="space-y-2.5">
                         <div className="flex justify-between items-center">
-                          <span className="text-xs text-gray-500 flex items-center gap-1.5">
+                          <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                             <Users className="w-3 h-3" />
                             Población
                           </span>
-                          <span className="text-xs font-bold text-gray-900">
+                          <span className="text-xs font-bold text-foreground">
                             {formatNumber(cluster.pob_total, 0)}
                           </span>
                         </div>
 
                         <div className="flex justify-between items-center">
-                          <span className="text-xs text-gray-500 flex items-center gap-1.5">
+                          <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                             <Users className="w-3 h-3" />
                             % Afro
                           </span>
-                          <span className="text-xs font-bold text-gray-900">
+                          <span className="text-xs font-bold text-foreground">
                             {formatPercent(cluster.pct_afro_mean, 1)}
                           </span>
                         </div>
@@ -297,7 +309,7 @@ export default function AnalisisPage() {
                         {/* Health access bar */}
                         <div>
                           <div className="flex justify-between items-center mb-1">
-                            <span className="text-xs text-gray-500 flex items-center gap-1.5">
+                            <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                               <Heart className="w-3 h-3 text-emerald-500" />
                               Est/10k hab
                             </span>
@@ -305,7 +317,7 @@ export default function AnalisisPage() {
                               {cluster.estab_10k_mean.toFixed(1)}
                             </span>
                           </div>
-                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{
@@ -323,7 +335,7 @@ export default function AnalisisPage() {
                         {/* Petroleum density bar */}
                         <div>
                           <div className="flex justify-between items-center mb-1">
-                            <span className="text-xs text-gray-500 flex items-center gap-1.5">
+                            <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                               <Flame className="w-3 h-3 text-red-500" />
                               Densidad Petróleo
                             </span>
@@ -331,7 +343,7 @@ export default function AnalisisPage() {
                               {cluster.densidad_petroleo_mean.toFixed(2)}
                             </span>
                           </div>
-                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{
@@ -347,12 +359,12 @@ export default function AnalisisPage() {
                         </div>
 
                         {/* Infrastructure count */}
-                        <div className="flex justify-between items-center pt-2 border-t border-gray-50">
-                          <span className="text-xs text-gray-500 flex items-center gap-1.5">
+                        <div className="flex justify-between items-center pt-2 border-t border-border/50">
+                          <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                             <Droplets className="w-3 h-3" />
                             Infraestructura
                           </span>
-                          <span className="text-xs font-bold text-gray-900">
+                          <span className="text-xs font-bold text-foreground">
                             {formatNumber(cluster.n_infraestructura, 0)}
                           </span>
                         </div>
@@ -368,15 +380,15 @@ export default function AnalisisPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
-        className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-50 via-white to-slate-50 border border-gray-100 p-6"
+        className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-muted/50 via-card to-muted/50 border border-border p-6"
       >
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-indigo-400/10 to-transparent rounded-full blur-3xl" />
         <div className="relative z-10">
-          <h3 className="text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-foreground mb-2 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-500" />
             Hallazgo Principal
           </h3>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Los datos revelan una{" "}
             <span className="font-semibold text-red-600">
               correlación negativa

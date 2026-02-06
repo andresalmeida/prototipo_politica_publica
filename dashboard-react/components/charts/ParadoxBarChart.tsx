@@ -52,7 +52,7 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-      className="relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
+      className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/5 bg-gradient-to-br from-white/80 to-white/40 dark:from-slate-900/80 dark:to-slate-900/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
     >
       {/* Decorative gradient orb */}
       <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-red-400/20 to-amber-400/10 rounded-full blur-3xl" />
@@ -60,11 +60,11 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
       {/* Header */}
       <div className="relative z-10 flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
             Paradoja: Petróleo Alto = Salud Baja
           </h3>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Comparación de densidad petrolera vs acceso a salud por cluster
           </p>
         </div>
@@ -127,27 +127,27 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
                 if (active && payload && payload.length) {
                   const d = payload[0].payload
                   return (
-                    <div className="bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-100 text-sm">
-                      <p className="font-bold text-gray-900 mb-2">
+                    <div className="bg-card/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-border text-sm">
+                      <p className="font-bold text-foreground mb-2">
                         Cluster {d.clusterNum} — {d.label}
                       </p>
                       <div className="space-y-2">
                         <div className="flex items-center gap-2">
                           <Flame className="w-3.5 h-3.5 text-red-500" />
-                          <span className="text-gray-500">Densidad Petrolera:</span>
+                          <span className="text-muted-foreground">Densidad Petrolera:</span>
                           <span className="font-semibold text-red-600">
                             {d.densidadPetrolera.toFixed(2)}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Heart className="w-3.5 h-3.5 text-emerald-500" />
-                          <span className="text-gray-500">Est. Salud/10k:</span>
+                          <span className="text-muted-foreground">Est. Salud/10k:</span>
                           <span className="font-semibold text-emerald-600">
                             {d.establecimientos.toFixed(2)}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 pt-1 border-t border-gray-100">
-                          <span className="text-gray-400">Parroquias:</span>
+                          <span className="text-muted-foreground">Parroquias:</span>
                           <span className="font-medium">{d.nParroquias}</span>
                         </div>
                       </div>
@@ -197,11 +197,11 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
       <div className="flex items-center justify-center gap-6 mt-2 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-4 h-3 rounded-sm bg-gradient-to-b from-red-600 to-red-800" />
-          <span className="text-gray-600 font-medium">Densidad Petrolera (norm)</span>
+          <span className="text-muted-foreground font-medium">Densidad Petrolera (norm)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-3 rounded-sm bg-gradient-to-b from-emerald-600 to-emerald-800" />
-          <span className="text-gray-600 font-medium">Establecimientos/10k hab</span>
+          <span className="text-muted-foreground font-medium">Establecimientos/10k hab</span>
         </div>
       </div>
 
@@ -210,11 +210,11 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="mt-4 p-3 rounded-xl bg-gradient-to-r from-red-50 to-amber-50 border border-red-100"
+        className="mt-4 p-3 rounded-xl bg-gradient-to-r from-red-50 to-amber-50 dark:from-red-950/50 dark:to-amber-950/50 border border-red-100 dark:border-red-800"
       >
         <div className="flex items-start gap-2">
           <AlertTriangle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p className="text-xs text-muted-foreground leading-relaxed">
             <span className="font-semibold text-red-700">C3 (Alta Actividad Petrolera)</span>{" "}
             muestra la mayor densidad de infraestructura pero el{" "}
             <span className="font-semibold text-red-700">menor acceso a salud</span>,
@@ -229,9 +229,9 @@ export function ParadoxBarChart({ data }: ParadoxBarChartProps) {
 function getClusterShortLabel(cluster: number): string {
   const labels: Record<number, string> = {
     0: "Sin Petróleo",
-    1: "Alta Actividad",
-    2: "Actividad Moderada",
-    3: "Alta Pob. Afro",
+    1: "Petrolero Moderado",
+    2: "Com. Afroecuatorianas",
+    3: "Alta Act. Petrolera",
   }
   return labels[cluster] || "Sin Clasificar"
 }

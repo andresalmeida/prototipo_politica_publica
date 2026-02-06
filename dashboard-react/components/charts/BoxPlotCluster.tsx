@@ -16,7 +16,7 @@ import {
   Label,
 } from "recharts"
 import { motion } from "framer-motion"
-import { BoxSelect, Activity } from "lucide-react"
+import { BoxSelect, Activity, Info } from "lucide-react"
 
 interface ParroquiaData {
   establecimientos_por_10k_hab: number | null
@@ -155,7 +155,7 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-      className="relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
+      className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/5 bg-gradient-to-br from-white/80 to-white/40 dark:from-slate-900/80 dark:to-slate-900/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
     >
       {/* Decorative gradient orb */}
       <div className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-emerald-400/20 to-blue-400/10 rounded-full blur-3xl" />
@@ -163,11 +163,11 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
       {/* Header */}
       <div className="relative z-10 flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
             <Activity className="w-5 h-5 text-emerald-500" />
             Acceso a Salud por Cluster
           </h3>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Distribución de establecimientos de salud por 10k habitantes
           </p>
         </div>
@@ -177,12 +177,12 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
       <div className="h-[420px] relative z-10">
         <div className="flex h-full items-end justify-around px-8 pb-12 pt-4 relative">
           {/* Y-axis labels */}
-          <div className="absolute left-0 top-4 bottom-12 flex flex-col justify-between text-xs text-gray-400">
+          <div className="absolute left-0 top-4 bottom-12 flex flex-col justify-between text-xs text-muted-foreground">
             {[70, 60, 50, 40, 30, 20, 10, 0].map((v) => (
               <span key={v} className="text-right w-6">{v}</span>
             ))}
           </div>
-          <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-500 font-medium whitespace-nowrap">
+          <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-muted-foreground font-medium whitespace-nowrap">
             Establecimientos por 10k hab
           </div>
 
@@ -191,7 +191,7 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
             {[0, 10, 20, 30, 40, 50, 60, 70].map((v) => (
               <div
                 key={v}
-                className="absolute w-full border-t border-gray-100"
+                className="absolute w-full border-t border-border/50"
                 style={{ bottom: `${(v / 70) * 100}%` }}
               />
             ))}
@@ -325,7 +325,7 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center gap-6 mt-2 text-xs text-gray-500">
+      <div className="flex items-center justify-center gap-6 mt-2 text-xs text-muted-foreground">
         <div className="flex items-center gap-1.5">
           <div className="w-4 h-3 rounded-sm border-2 border-gray-400 bg-gray-100" />
           <span>IQR (Q1-Q3)</span>
@@ -358,13 +358,36 @@ export function BoxPlotCluster({ data }: BoxPlotClusterProps) {
             <div className="text-xs font-semibold" style={{ color: box.color }}>
               {box.cluster}
             </div>
-            <div className="text-lg font-bold text-gray-900">
+            <div className="text-lg font-bold text-foreground">
               {box.median.toFixed(1)}
             </div>
-            <div className="text-[10px] text-gray-500">mediana</div>
+            <div className="text-[10px] text-muted-foreground">mediana</div>
           </motion.div>
         ))}
       </div>
+
+      {/* Insight callout */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="mt-4 p-3 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 border border-emerald-100 dark:border-emerald-800"
+      >
+        <div className="flex items-start gap-2">
+          <Info className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Cada caja muestra cómo se distribuye el acceso a salud dentro de un grupo de parroquias.
+            La <span className="font-semibold text-gray-800">línea central</span> indica el valor
+            típico (mediana). Los clusters sin actividad petrolera ({" "}
+            <span className="font-semibold text-emerald-700">C2</span> y{" "}
+            <span className="font-semibold text-blue-700">C0</span>) presentan las medianas más
+            altas, mientras que{" "}
+            <span className="font-semibold text-amber-700">C3 (Alta Actividad Petrolera)</span>{" "}
+            muestra el acceso más bajo, confirmando que a mayor explotación petrolera, menor
+            acceso a servicios de salud.
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }

@@ -127,7 +127,7 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
+      className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/5 bg-gradient-to-br from-white/80 to-white/40 dark:from-slate-900/80 dark:to-slate-900/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-6"
     >
       {/* Decorative gradient orb */}
       <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-purple-400/10 rounded-full blur-3xl" />
@@ -135,11 +135,11 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
       {/* Header */}
       <div className="relative z-10 flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
             <TrendingDown className="w-5 h-5 text-red-500" />
             Paradoja Extractivista: Petróleo vs Salud
           </h3>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Correlación negativa entre infraestructura petrolera y acceso a salud
           </p>
         </div>
@@ -150,7 +150,7 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, type: "spring" }}
-            className="px-3 py-1.5 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-mono font-semibold"
+            className="px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-xs font-mono font-semibold"
           >
             r = {regression.r.toFixed(3)}
           </motion.div>
@@ -158,7 +158,7 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.4, type: "spring" }}
-            className="px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-mono font-semibold"
+            className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-xs font-mono font-semibold"
           >
             p = {regression.p.toFixed(4)}
           </motion.div>
@@ -219,20 +219,20 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
                 if (active && payload && payload.length) {
                   const d = payload[0].payload
                   return (
-                    <div className="bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-100 text-sm">
-                      <p className="font-bold text-gray-900">{d.name}</p>
-                      <p className="text-gray-500 text-xs">{d.provincia}</p>
+                    <div className="bg-card/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-border text-sm">
+                      <p className="font-bold text-foreground">{d.name}</p>
+                      <p className="text-muted-foreground text-xs">{d.provincia}</p>
                       <div className="mt-2 space-y-1">
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-500">Infraestructura:</span>
+                          <span className="text-muted-foreground">Infraestructura:</span>
                           <span className="font-semibold">{d.x}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-500">Est. Salud/10k:</span>
+                          <span className="text-muted-foreground">Est. Salud/10k:</span>
                           <span className="font-semibold">{d.y.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-500">Cluster:</span>
+                          <span className="text-muted-foreground">Cluster:</span>
                           <span className="font-semibold">C{d.cluster}</span>
                         </div>
                       </div>
@@ -274,7 +274,7 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center gap-4 mt-3 text-xs text-gray-500">
+      <div className="flex items-center justify-center gap-4 mt-3 text-xs text-muted-foreground">
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-0.5 bg-red-500" style={{ borderTop: "2px dashed #ef4444" }} />
           <span>Tendencia</span>
@@ -291,6 +291,25 @@ export function ScatterPlotParadox({ data }: ScatterPlotParadoxProps) {
           </div>
         ))}
       </div>
+
+      {/* Insight callout */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="mt-4 p-3 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border border-blue-100 dark:border-blue-800"
+      >
+        <div className="flex items-start gap-2">
+          <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Cada punto representa una parroquia. La{" "}
+            <span className="font-semibold text-red-600">línea de tendencia descendente</span>{" "}
+            confirma que a mayor infraestructura petrolera, menor acceso a salud.
+            El coeficiente <span className="font-semibold text-gray-800">r = {regression.r.toFixed(3)}</span>{" "}
+            indica una correlación negativa entre ambas variables.
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }

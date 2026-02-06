@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { cn } from "../../lib"
 import { Button } from "../ui/button"
+import { ThemeToggle } from "../ui/theme-toggle"
 import { useUIStore } from "../../store"
 
 const navItems = [
@@ -67,7 +68,7 @@ export function Sidebar() {
         className={cn(
           "fixed left-0 top-0 z-40 h-screen overflow-hidden",
           "bg-gradient-to-b from-card/95 to-card/80 backdrop-blur-xl",
-          "border-r border-white/10 shadow-2xl",
+          "border-r border-border shadow-2xl",
           "lg:relative lg:w-72 lg:opacity-100"
         )}
       >
@@ -140,10 +141,15 @@ export function Sidebar() {
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-border text-xs text-muted-foreground text-center">
-            <span className="font-medium">Extractivismo Ecuador</span>
-            <span className="mx-2">·</span>
-            <span>2025</span>
+          <div className="p-4 border-t border-border text-xs text-muted-foreground text-center space-y-3">
+            <div className="flex items-center justify-center">
+              <ThemeToggle />
+            </div>
+            <div>
+              <span className="font-medium">Extractivismo Ecuador</span>
+              <span className="mx-2">·</span>
+              <span>2025</span>
+            </div>
           </div>
         </div>
       </motion.aside>

@@ -22,9 +22,9 @@ export function formatPercent(num: number, decimals: number = 1): string {
 export function getClusterColor(cluster: number): string {
   const colors: Record<number, string> = {
     0: "#3b82f6", // Blue - Sin petróleo
-    1: "#ef4444", // Red - Alta actividad
-    2: "#10b981", // Green - Moderada
-    3: "#f59e0b", // Orange - Población Afro
+    1: "#ef4444", // Red - Petrolero moderado
+    2: "#10b981", // Green - Comunidades Afroecuatorianas
+    3: "#f59e0b", // Orange - Alta actividad petrolera
   }
   return colors[cluster] || "#94a3b8"
 }
@@ -32,9 +32,9 @@ export function getClusterColor(cluster: number): string {
 export function getClusterLabel(cluster: number): string {
   const labels: Record<number, string> = {
     0: "Sin Petróleo",
-    1: "Alta Actividad",
-    2: "Actividad Moderada",
-    3: "Alta Población Afro",
+    1: "Petrolero Moderado",
+    2: "Comunidades Afroecuatorianas",
+    3: "Alta Actividad Petrolera",
   }
   return labels[cluster] || "Sin Clasificar"
 }
